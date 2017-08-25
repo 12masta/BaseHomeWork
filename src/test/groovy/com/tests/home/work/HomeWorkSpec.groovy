@@ -13,7 +13,7 @@ class HomeWorkSpec extends AbstractSpec {
     TestCase "Create new lead"() {
         when: "lead was created"
         def newLeadPage = createDummyLead(user)
-        then: "the Lead status is set to New"
+        then: "the lead status is set to New"
         newLeadPage.leadStatus == "New"
         where:
         user                    | _
