@@ -1,7 +1,11 @@
 package com.pages
 
-interface CreatedLeadPage {
+interface LeadDetailsPage {
     DashboardPage goToDashboard()
+
     LeadsPage goToLeads()
+
     def getLeadStatus()
+
+    EditLeadPage clickEditLead()
 }
