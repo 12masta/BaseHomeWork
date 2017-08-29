@@ -1,11 +1,11 @@
 package com.pages
 
-import org.apache.commons.lang3.RandomStringUtils
+import com.helpers.DropdownHelper
 import org.openqa.selenium.WebDriver
 import org.openqa.selenium.WebElement
 import org.openqa.selenium.support.FindBy
 
-class NewLeadPageWebImpl extends BasePageObjectWebImpl implements NewLeadPage {
+class EditLeadPageWebImpl extends BasePageObjectWebImpl implements EditLeadPage {
     @FindBy(id = "lead-last-name")
     private WebElement lastNameField
 
@@ -15,14 +15,19 @@ class NewLeadPageWebImpl extends BasePageObjectWebImpl implements NewLeadPage {
     @FindBy(xpath = "//button[text()='Save']")
     private WebElement saveButton
 
+    @FindBy(xpath = "//div[@class='status-select']")
+    private WebElement statusField
 
-    NewLeadPageWebImpl(WebDriver driver) {
+    EditLeadPageWebImpl(WebDriver driver) {
         super(driver)
     }
 
-    LeadDetailsPage createDummyLeadOnlyMandatory() {
-        lastNameField.sendKeys(RandomStringUtils.random(6, ('A'..'Z').join(",")))
-        companyNameField.sendKeys(RandomStringUtils.random(6, ('A'..'Z').join(",")))
+    EditLeadPage editStatus(String text) {
+        DropdownHelper.selectDropdownByText(statusField, text)
+        this
+    }
+
+    LeadDetailsPage saveChanges() {
         saveButton.click()
         return new LeadDetailsPageWebImpl(driver)
     }
