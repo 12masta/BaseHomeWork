@@ -1,2 +1,8 @@
 # BaseHomeWork
-Home work
+To run test type:
+
+```
+mvn verify package
+```
+
+in root directory
