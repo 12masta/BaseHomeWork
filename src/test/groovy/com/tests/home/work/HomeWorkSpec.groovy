@@ -16,11 +16,11 @@ class HomeWorkSpec extends AbstractSpec {
         then: "the lead status is set to New"
         newLead.leadStatus == "New"
         when: "lead was updated"
-        def updatedLead = updateLead newLead, status
-        then: "the lead status is set to New"
-        updatedLead.leadStatus == status
+        def updatedLead = updateLead newLead, editedStatus
+        then: "the lead status is set to #editedStatus"
+        updatedLead.leadStatus == editedStatus
         where:
-        user                    | status
+        user                    | editedStatus
         getValidUser(BASE_USER) | "Working"
     }
 }
