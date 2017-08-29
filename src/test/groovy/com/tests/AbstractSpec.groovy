@@ -3,8 +3,10 @@ package com.tests
 import com.credentials.CredentialProvider
 import com.credentials.ValidCredentialProviderImpl
 import com.data.User
+import com.pages.LeadDetailsPage
 import com.pages.LoginPage
 import com.pages.LoginPageWebImpl
+import io.github.bonigarcia.wdm.ChromeDriverManager
 import org.openqa.selenium.WebDriver
 import org.openqa.selenium.chrome.ChromeDriver
 import spock.lang.Specification
@@ -16,22 +18,25 @@ class AbstractSpec extends Specification {
     protected LoginPage loginPage
 
     def setup() {
-        System.setProperty("webdriver.chrome.driver", "C:\\selenium\\drivers\\chromedriver.exe")
+        ChromeDriverManager.getInstance().setup()
         driver = new ChromeDriver()
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS)
         driver.get("https://core.futuresimple.com/users/login")
-        loginPage = new LoginPageWebImpl(driver)
     }
 
     def cleanup() {
         driver.close()
     }
 
-    def getValidUser(User user){
+    def getValidUser(User user) {
         new ValidCredentialProviderImpl(user)
     }
 
-    def createDummyLead(CredentialProvider user){
-        loginPage.login(user).goToLeads().clickNewLead().createDummyLeadOnlyMandatory()
+    def createDummyLead(CredentialProvider user) {
+        new LoginPageWebImpl(driver).login(user).goToLeads().clickNewLead().createDummyLeadOnlyMandatory()
+    }
+
+    def updateLead(LeadDetailsPage newLeadPage, String status) {
+        newLeadPage.clickEditLead().editStatus(status).saveChanges()
     }
 }
