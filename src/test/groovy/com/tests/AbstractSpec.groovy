@@ -15,7 +15,6 @@ import java.util.concurrent.TimeUnit
 
 class AbstractSpec extends Specification {
     protected WebDriver driver
-    protected LoginPage loginPage
 
     def setup() {
         ChromeDriverManager.getInstance().setup()
