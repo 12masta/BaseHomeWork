@@ -25,7 +25,7 @@ class HomeWorkSpec extends AbstractSpec {
     }
 
     @Unroll
-    TestCase "Create new lead and change status name"() {
+    TestCase "Create new lead and change status name verify on Leads main page"() {
         when: "lead was created"
         def newLead = createDummyLead user
         then: "the lead status is set to #oldStatusName"
@@ -42,7 +42,7 @@ class HomeWorkSpec extends AbstractSpec {
     }
 
     @Unroll
-    TestCase "Create new lead and change status name on lead page"() {
+    TestCase "Create new lead and change status name on lead page verify on Lead details page"() {
         when: "lead was created"
         def newLead = createLead user, leadName
         then: "the lead status is set to #oldStatusName"
