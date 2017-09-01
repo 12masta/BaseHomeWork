@@ -6,4 +6,8 @@ interface NewLeadPage {
     LeadsPage goToLeads()
 
     LeadDetailsPage createDummyLeadOnlyMandatory()
+
+    SettingsPage goToSettings()
+
+    LeadDetailsPage createLeadWithLastName(String lastName)
 }

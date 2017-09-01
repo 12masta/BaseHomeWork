@@ -1,13 +1,11 @@
 package com.pages
 
-interface EditLeadPage {
+interface SettingsPage {
     DashboardPage goToDashboard()
 
     LeadsPage goToLeads()
 
-    EditLeadPage editStatus(String value)
-
-    LeadDetailsPage saveChanges()
-
     SettingsPage goToSettings()
+
+    SettingsLeadPage goToLeadSettings()
 }

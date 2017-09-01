@@ -23,4 +23,40 @@ class HomeWorkSpec extends AbstractSpec {
         user                    | editedStatus
         getValidUser(BASE_USER) | "Working"
     }
+
+    @Unroll
+    TestCase "Create new lead and change status name verify on Leads main page"() {
+        when: "lead was created"
+        def newLead = createDummyLead user
+        then: "the lead status is set to #oldStatusName"
+        newLead.leadStatus == oldStatusName
+        when: "status was updated"
+        def leadPage = updateStatusName newLead, oldStatusName, changedStatusName
+        then: "status name is set to #changedStatusName"
+        leadPage.isStatusExistInSidebar(changedStatusName)
+        cleanup: "change status name to #oldStatusName"
+        updateStatusName leadPage, changedStatusName, oldStatusName
+        where:
+        user                    | oldStatusName | changedStatusName
+        getValidUser(BASE_USER) | "New"         | "WorkingChanged"
+    }
+
+    @Unroll
+    TestCase "Create new lead and change status name on lead page verify on Lead details page"() {
+        when: "lead was created"
+        def newLead = createLead user, leadName
+        then: "the lead status is set to #oldStatusName"
+        newLead.leadStatus == oldStatusName
+        when: "status was updated"
+        def leadPage = updateStatusName newLead, oldStatusName, changedStatusName
+        and: "the lead was opened"
+        def openedLead = openLeadByName leadPage, leadName
+        then: "status name is set to #changedStatusName"
+        openedLead.leadStatus == changedStatusName
+        cleanup: "change status name to #oldStatusName"
+        updateStatusName leadPage, changedStatusName, oldStatusName
+        where:
+        user                    | leadName | oldStatusName | changedStatusName
+        getValidUser(BASE_USER) | "Stanek" | "New"         | "WorkingChanged"
+    }
 }

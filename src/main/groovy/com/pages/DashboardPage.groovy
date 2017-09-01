@@ -4,4 +4,6 @@ interface DashboardPage {
     DashboardPage goToDashboard()
 
     LeadsPage goToLeads()
+
+    SettingsPage goToSettings()
 }

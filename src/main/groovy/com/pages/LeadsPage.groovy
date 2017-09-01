@@ -6,4 +6,12 @@ interface LeadsPage {
     LeadsPage goToLeads()
 
     NewLeadPage clickNewLead()
+
+    SettingsPage goToSettings()
+
+    LeadsPageWebImpl isStatusExistInSidebar(String statusName)
+
+    LeadDetailsPage openLeadByName(String name)
+
+    LeadsPage searchLead(String name)
 }

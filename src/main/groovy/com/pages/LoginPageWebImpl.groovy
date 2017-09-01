@@ -5,7 +5,7 @@ import org.openqa.selenium.WebDriver
 import org.openqa.selenium.WebElement
 import org.openqa.selenium.support.FindBy
 
-class LoginPageWebImpl extends BasePageObjectWebImpl implements LoginPage {
+class LoginPageWebImpl extends BasePageObjectWebImpl implements LoginPage, BasePageObject {
 
     @FindBy(id = "user_email")
     private WebElement userEmailField
