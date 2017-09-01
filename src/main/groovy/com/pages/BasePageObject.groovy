@@ -4,4 +4,6 @@ interface BasePageObject {
     DashboardPage goToDashboard()
 
     LeadsPage goToLeads()
+
+    SettingsPage goToSettings()
 }

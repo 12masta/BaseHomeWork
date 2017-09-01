@@ -8,4 +8,6 @@ interface LeadDetailsPage {
     def getLeadStatus()
 
     EditLeadPage clickEditLead()
+
+    SettingsPage goToSettings()
 }

@@ -4,7 +4,7 @@ import org.openqa.selenium.WebDriver
 import org.openqa.selenium.WebElement
 import org.openqa.selenium.support.FindBy
 
-class LeadDetailsPageWebImpl extends BasePageObjectWebImpl implements LeadDetailsPage {
+class LeadDetailsPageWebImpl extends BasePageObjectWebImpl implements LeadDetailsPage, BasePageObject {
 
     @FindBy(xpath = "//span[@class='lead-status']")
     private WebElement leadStatus

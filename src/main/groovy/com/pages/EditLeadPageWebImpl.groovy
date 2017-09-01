@@ -5,7 +5,7 @@ import org.openqa.selenium.WebDriver
 import org.openqa.selenium.WebElement
 import org.openqa.selenium.support.FindBy
 
-class EditLeadPageWebImpl extends BasePageObjectWebImpl implements EditLeadPage {
+class EditLeadPageWebImpl extends BasePageObjectWebImpl implements EditLeadPage, BasePageObject {
     @FindBy(id = "lead-last-name")
     private WebElement lastNameField
 

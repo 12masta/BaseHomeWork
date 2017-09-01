@@ -12,6 +12,12 @@ class BasePageObjectWebImpl implements BasePageObject {
     @FindBy(id = "nav-item-leads")
     private WebElement navbarButtonLeads
 
+    @FindBy(id = "user-dd")
+    private WebElement navbarButtonSettings
+
+    @FindBy(xpath = "//li[@class='settings']")
+    private WebElement settingsButton
+
     protected WebDriver driver
 
     BasePageObjectWebImpl(WebDriver driver) {
@@ -27,5 +33,11 @@ class BasePageObjectWebImpl implements BasePageObject {
     LeadsPage goToLeads() {
         navbarButtonLeads.click()
         return new LeadsPageWebImpl(driver)
+    }
+
+    SettingsPage goToSettings() {
+        navbarButtonSettings.click()
+        settingsButton.click()
+        return new SettingsPageWebImpl(driver)
     }
 }
